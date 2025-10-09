@@ -1,5 +1,7 @@
 import "./style.css";
 
+// Incremental game - Step 1: Basic clickable button
+
 // Create a button element
 const button = document.createElement('button');
 button.innerHTML = 'Click Me';
