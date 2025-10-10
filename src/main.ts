@@ -1,8 +1,13 @@
 import "./style.css";
 
-// Incremental game - Step 1: Basic clickable button
+let counter: number = 0;
 
-// Create a button element
+const counterDisplay = document.createElement("div");
+counterDisplay.innerHTML = `${counter} clicks`;
+counterDisplay.style.fontSize = "24px";
+counterDisplay.style.margin = "20px";
+counterDisplay.style.fontWeight = "bold";
+
 const button = document.createElement("button");
 button.innerHTML = "Click Me";
 button.style.fontSize = "16px";
@@ -13,5 +18,10 @@ button.style.cursor = "pointer";
 button.style.backgroundColor = "#f0f0f0";
 button.style.color = "#333";
 
-// Add the button to the page
+button.addEventListener("click", () => {
+  counter++;
+  counterDisplay.innerHTML = `${counter} clicks`;
+});
+
+document.body.appendChild(counterDisplay);
 document.body.appendChild(button);
