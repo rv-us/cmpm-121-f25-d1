@@ -49,9 +49,9 @@ function updateCounter(currentTime: number) {
   const deltaTime = (currentTime - lastTime) / 1000;
   counter += growthRate * deltaTime;
   counterDisplay.innerHTML = `${Math.floor(counter)} clicks`;
-  
+
   upgradeButton.disabled = counter < 10;
-  
+
   lastTime = currentTime;
   requestAnimationFrame(updateCounter);
 }
