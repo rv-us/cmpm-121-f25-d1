@@ -23,5 +23,10 @@ button.addEventListener("click", () => {
   counterDisplay.innerHTML = `${counter} clicks`;
 });
 
+setInterval(() => {
+  counter++;
+  counterDisplay.innerHTML = `${counter} clicks`;
+}, 1000);
+
 document.body.appendChild(counterDisplay);
 document.body.appendChild(button);
