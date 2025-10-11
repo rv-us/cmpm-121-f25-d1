@@ -20,6 +20,9 @@ button.style.cursor = "pointer";
 button.style.backgroundColor = "#f0f0f0";
 button.style.color = "#333";
 
+console.log("edit by Anish");
+console.log("actually edited by Rachit");
+
 button.addEventListener("click", () => {
   counter++;
   counterDisplay.innerHTML = `${counter} clicks`;
