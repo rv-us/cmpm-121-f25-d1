@@ -6,6 +6,7 @@ interface Item {
   rate: number;
   owned: number;
   baseCost: number;
+  description: string;
 }
 
 let counter: number = 0;
@@ -13,9 +14,46 @@ let growthRate: number = 0;
 let lastTime: number = performance.now();
 
 const availableItems: Item[] = [
-  { name: "Fuel Pump", cost: 10, rate: 0.1, owned: 0, baseCost: 10 },
-  { name: "Rocket Engine", cost: 100, rate: 2.0, owned: 0, baseCost: 100 },
-  { name: "Space Station", cost: 1000, rate: 50, owned: 0, baseCost: 1000 },
+  { 
+    name: "Fuel Pump", 
+    cost: 10, 
+    rate: 0.1, 
+    owned: 0, 
+    baseCost: 10,
+    description: "A basic fuel extraction system that slowly pumps fuel from the ground"
+  },
+  { 
+    name: "Rocket Engine", 
+    cost: 100, 
+    rate: 2.0, 
+    owned: 0, 
+    baseCost: 100,
+    description: "A powerful engine that burns fuel efficiently for continuous thrust"
+  },
+  { 
+    name: "Space Station", 
+    cost: 1000, 
+    rate: 50, 
+    owned: 0, 
+    baseCost: 1000,
+    description: "A massive orbital facility that processes fuel on an industrial scale"
+  },
+  { 
+    name: "Asteroid Miner", 
+    cost: 10000, 
+    rate: 200, 
+    owned: 0, 
+    baseCost: 10000,
+    description: "Mining drones that extract precious fuel from nearby asteroids"
+  },
+  { 
+    name: "Dyson Sphere", 
+    cost: 100000, 
+    rate: 1000, 
+    owned: 0, 
+    baseCost: 100000,
+    description: "A megastructure that harnesses the power of an entire star for fuel production"
+  },
 ];
 
 const counterDisplay = document.createElement("div");
@@ -47,6 +85,7 @@ button.addEventListener("click", () => {
 
 const upgradeButtons: HTMLButtonElement[] = [];
 const ownedDisplays: HTMLDivElement[] = [];
+const descriptionDisplays: HTMLDivElement[] = [];
 
 availableItems.forEach((item, _index) => {
   const upgradeButton = document.createElement("button");
@@ -67,6 +106,13 @@ availableItems.forEach((item, _index) => {
   ownedDisplay.style.margin = "5px";
   ownedDisplay.style.color = "#666";
 
+  const descriptionDisplay = document.createElement("div");
+  descriptionDisplay.innerHTML = item.description;
+  descriptionDisplay.style.fontSize = "12px";
+  descriptionDisplay.style.margin = "2px 5px 10px 5px";
+  descriptionDisplay.style.color = "#888";
+  descriptionDisplay.style.fontStyle = "italic";
+
   upgradeButton.addEventListener("click", () => {
     if (counter >= item.cost) {
       counter -= item.cost;
@@ -82,6 +128,7 @@ availableItems.forEach((item, _index) => {
 
   upgradeButtons.push(upgradeButton);
   ownedDisplays.push(ownedDisplay);
+  descriptionDisplays.push(descriptionDisplay);
 });
 
 function updateCounter(currentTime: number) {
@@ -106,4 +153,5 @@ document.body.appendChild(button);
 availableItems.forEach((_, index) => {
   document.body.appendChild(upgradeButtons[index]);
   document.body.appendChild(ownedDisplays[index]);
+  document.body.appendChild(descriptionDisplays[index]);
 });
