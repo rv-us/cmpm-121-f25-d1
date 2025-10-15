@@ -7,7 +7,7 @@ let lastTime: number = performance.now();
 const items = [
   { name: "A", cost: 10, rate: 0.1, owned: 0 },
   { name: "B", cost: 100, rate: 2.0, owned: 0 },
-  { name: "C", cost: 1000, rate: 50, owned: 0 }
+  { name: "C", cost: 1000, rate: 50, owned: 0 },
 ];
 
 const counterDisplay = document.createElement("div");
