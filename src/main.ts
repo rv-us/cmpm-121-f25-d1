@@ -40,7 +40,7 @@ button.addEventListener("click", () => {
 const upgradeButtons: HTMLButtonElement[] = [];
 const ownedDisplays: HTMLDivElement[] = [];
 
-items.forEach((item, index) => {
+items.forEach((item, _index) => {
   const upgradeButton = document.createElement("button");
   upgradeButton.innerHTML = `Buy ${item.name} (${item.cost} clicks)`;
   upgradeButton.style.fontSize = "14px";
