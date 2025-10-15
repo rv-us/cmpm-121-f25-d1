@@ -1,10 +1,18 @@
 import "./style.css";
 
+interface Item {
+  name: string;
+  cost: number;
+  rate: number;
+  owned: number;
+  baseCost: number;
+}
+
 let counter: number = 0;
 let growthRate: number = 0;
 let lastTime: number = performance.now();
 
-const items = [
+const availableItems: Item[] = [
   { name: "Fuel Pump", cost: 10, rate: 0.1, owned: 0, baseCost: 10 },
   { name: "Rocket Engine", cost: 100, rate: 2.0, owned: 0, baseCost: 100 },
   { name: "Space Station", cost: 1000, rate: 50, owned: 0, baseCost: 1000 },
@@ -40,7 +48,7 @@ button.addEventListener("click", () => {
 const upgradeButtons: HTMLButtonElement[] = [];
 const ownedDisplays: HTMLDivElement[] = [];
 
-items.forEach((item, _index) => {
+availableItems.forEach((item, _index) => {
   const upgradeButton = document.createElement("button");
   upgradeButton.innerHTML = `Buy ${item.name} (${item.cost} fuel)`;
   upgradeButton.style.fontSize = "14px";
@@ -82,7 +90,7 @@ function updateCounter(currentTime: number) {
   counterDisplay.innerHTML = `${Math.floor(counter)} fuel`;
 
   upgradeButtons.forEach((button, index) => {
-    button.disabled = counter < items[index].cost;
+    button.disabled = counter < availableItems[index].cost;
   });
 
   lastTime = currentTime;
@@ -95,7 +103,7 @@ document.body.appendChild(counterDisplay);
 document.body.appendChild(growthDisplay);
 document.body.appendChild(button);
 
-items.forEach((_, index) => {
+availableItems.forEach((_, index) => {
   document.body.appendChild(upgradeButtons[index]);
   document.body.appendChild(ownedDisplays[index]);
 });
