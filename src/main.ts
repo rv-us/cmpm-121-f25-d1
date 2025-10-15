@@ -14,45 +14,50 @@ let growthRate: number = 0;
 let lastTime: number = performance.now();
 
 const availableItems: Item[] = [
-  { 
-    name: "Fuel Pump", 
-    cost: 10, 
-    rate: 0.1, 
-    owned: 0, 
+  {
+    name: "Fuel Pump",
+    cost: 10,
+    rate: 0.1,
+    owned: 0,
     baseCost: 10,
-    description: "A basic fuel extraction system that slowly pumps fuel from the ground"
+    description:
+      "A basic fuel extraction system that slowly pumps fuel from the ground",
   },
-  { 
-    name: "Rocket Engine", 
-    cost: 100, 
-    rate: 2.0, 
-    owned: 0, 
+  {
+    name: "Rocket Engine",
+    cost: 100,
+    rate: 2.0,
+    owned: 0,
     baseCost: 100,
-    description: "A powerful engine that burns fuel efficiently for continuous thrust"
+    description:
+      "A powerful engine that burns fuel efficiently for continuous thrust",
   },
-  { 
-    name: "Space Station", 
-    cost: 1000, 
-    rate: 50, 
-    owned: 0, 
+  {
+    name: "Space Station",
+    cost: 1000,
+    rate: 50,
+    owned: 0,
     baseCost: 1000,
-    description: "A massive orbital facility that processes fuel on an industrial scale"
+    description:
+      "A massive orbital facility that processes fuel on an industrial scale",
   },
-  { 
-    name: "Asteroid Miner", 
-    cost: 10000, 
-    rate: 200, 
-    owned: 0, 
+  {
+    name: "Asteroid Miner",
+    cost: 10000,
+    rate: 200,
+    owned: 0,
     baseCost: 10000,
-    description: "Mining drones that extract precious fuel from nearby asteroids"
+    description:
+      "Mining drones that extract precious fuel from nearby asteroids",
   },
-  { 
-    name: "Dyson Sphere", 
-    cost: 100000, 
-    rate: 1000, 
-    owned: 0, 
+  {
+    name: "Dyson Sphere",
+    cost: 100000,
+    rate: 1000,
+    owned: 0,
     baseCost: 100000,
-    description: "A megastructure that harnesses the power of an entire star for fuel production"
+    description:
+      "A megastructure that harnesses the power of an entire star for fuel production",
   },
 ];
 
