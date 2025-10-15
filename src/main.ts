@@ -5,9 +5,9 @@ let growthRate: number = 0;
 let lastTime: number = performance.now();
 
 const items = [
-  { name: "A", cost: 10, rate: 0.1, owned: 0 },
-  { name: "B", cost: 100, rate: 2.0, owned: 0 },
-  { name: "C", cost: 1000, rate: 50, owned: 0 },
+  { name: "A", cost: 10, rate: 0.1, owned: 0, baseCost: 10 },
+  { name: "B", cost: 100, rate: 2.0, owned: 0, baseCost: 100 },
+  { name: "C", cost: 1000, rate: 50, owned: 0, baseCost: 1000 },
 ];
 
 const counterDisplay = document.createElement("div");
@@ -64,9 +64,11 @@ items.forEach((item, _index) => {
       counter -= item.cost;
       item.owned++;
       growthRate += item.rate;
+      item.cost = Math.floor(item.baseCost * Math.pow(1.15, item.owned));
       counterDisplay.innerHTML = `${counter} clicks`;
       growthDisplay.innerHTML = `${growthRate.toFixed(1)} clicks/sec`;
       ownedDisplay.innerHTML = `${item.name}: ${item.owned} owned`;
+      upgradeButton.innerHTML = `Buy ${item.name} (${item.cost} clicks)`;
     }
   });
 
