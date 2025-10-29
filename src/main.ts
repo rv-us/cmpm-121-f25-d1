@@ -62,26 +62,16 @@ const availableItems: Item[] = [
 ];
 
 const fuelDisplay = document.createElement("div");
+fuelDisplay.classList.add("fuel-display");
 fuelDisplay.innerHTML = `${fuel} fuel`;
-fuelDisplay.style.fontSize = "24px";
-fuelDisplay.style.margin = "20px";
-fuelDisplay.style.fontWeight = "bold";
 
 const growthDisplay = document.createElement("div");
+growthDisplay.classList.add("growth-display");
 growthDisplay.innerHTML = `${fuelPerSecond.toFixed(1)} fuel/sec`;
-growthDisplay.style.fontSize = "18px";
-growthDisplay.style.margin = "10px";
-growthDisplay.style.color = "#666";
 
 const button = document.createElement("button");
+button.classList.add("launch-button");
 button.innerHTML = "🚀 Launch Rocket";
-button.style.fontSize = "16px";
-button.style.padding = "10px 20px";
-button.style.border = "2px solid #333";
-button.style.borderRadius = "5px";
-button.style.cursor = "pointer";
-button.style.backgroundColor = "#4A90E2";
-button.style.color = "white";
 
 button.addEventListener("click", () => {
   fuel++;
@@ -94,29 +84,17 @@ const descriptionDisplays: HTMLDivElement[] = [];
 
 availableItems.forEach((item, _index) => {
   const upgradeButton = document.createElement("button");
+  upgradeButton.classList.add("upgrade-button");
   upgradeButton.innerHTML = `Buy ${item.name} (${item.cost} fuel)`;
-  upgradeButton.style.fontSize = "14px";
-  upgradeButton.style.padding = "8px 16px";
-  upgradeButton.style.border = "2px solid #333";
-  upgradeButton.style.borderRadius = "5px";
-  upgradeButton.style.cursor = "pointer";
-  upgradeButton.style.backgroundColor = "#f0f0f0";
-  upgradeButton.style.color = "#333";
-  upgradeButton.style.margin = "5px";
   upgradeButton.disabled = true;
 
   const ownedDisplay = document.createElement("div");
+  ownedDisplay.classList.add("owned-display");
   ownedDisplay.innerHTML = `${item.name}: ${item.owned} owned`;
-  ownedDisplay.style.fontSize = "14px";
-  ownedDisplay.style.margin = "5px";
-  ownedDisplay.style.color = "#666";
 
   const descriptionDisplay = document.createElement("div");
+  descriptionDisplay.classList.add("description-display");
   descriptionDisplay.innerHTML = item.description;
-  descriptionDisplay.style.fontSize = "12px";
-  descriptionDisplay.style.margin = "2px 5px 10px 5px";
-  descriptionDisplay.style.color = "#888";
-  descriptionDisplay.style.fontStyle = "italic";
 
   upgradeButton.addEventListener("click", () => {
     if (fuel >= item.cost) {
