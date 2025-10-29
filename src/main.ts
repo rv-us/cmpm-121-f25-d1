@@ -1,5 +1,9 @@
 import "./style.css";
 
+// ============================================================================
+// Types
+// ============================================================================
+
 interface Item {
   name: string;
   cost: number;
@@ -9,9 +13,17 @@ interface Item {
   description: string;
 }
 
+// ============================================================================
+// Game State
+// ============================================================================
+
 let fuel: number = 0;
 let fuelPerSecond: number = 0;
 let lastTime: number = performance.now();
+
+// ============================================================================
+// Game Data
+// ============================================================================
 
 const availableItems: Item[] = [
   {
@@ -61,6 +73,10 @@ const availableItems: Item[] = [
   },
 ];
 
+// ============================================================================
+// UI Construction
+// ============================================================================
+
 const fuelDisplay = document.createElement("div");
 fuelDisplay.classList.add("fuel-display");
 fuelDisplay.innerHTML = `${fuel} fuel`;
@@ -69,14 +85,22 @@ const growthDisplay = document.createElement("div");
 growthDisplay.classList.add("growth-display");
 growthDisplay.innerHTML = `${fuelPerSecond.toFixed(1)} fuel/sec`;
 
-const button = document.createElement("button");
-button.classList.add("launch-button");
-button.innerHTML = "🚀 Launch Rocket";
+const launchButton = document.createElement("button");
+launchButton.classList.add("launch-button");
+launchButton.innerHTML = "🚀 Launch Rocket";
 
-button.addEventListener("click", () => {
+// ============================================================================
+// Event Handlers
+// ============================================================================
+
+launchButton.addEventListener("click", () => {
   fuel++;
   fuelDisplay.innerHTML = `${fuel} fuel`;
 });
+
+// ============================================================================
+// Upgrade System
+// ============================================================================
 
 const upgradeButtons: HTMLButtonElement[] = [];
 const ownedDisplays: HTMLDivElement[] = [];
@@ -114,6 +138,10 @@ availableItems.forEach((item, _index) => {
   descriptionDisplays.push(descriptionDisplay);
 });
 
+// ============================================================================
+// Game Loop
+// ============================================================================
+
 function updateGameState(currentTime: number) {
   const deltaTime = (currentTime - lastTime) / 1000;
   fuel += fuelPerSecond * deltaTime;
@@ -129,9 +157,13 @@ function updateGameState(currentTime: number) {
 
 requestAnimationFrame(updateGameState);
 
+// ============================================================================
+// DOM Setup
+// ============================================================================
+
 document.body.appendChild(fuelDisplay);
 document.body.appendChild(growthDisplay);
-document.body.appendChild(button);
+document.body.appendChild(launchButton);
 
 availableItems.forEach((_, index) => {
   document.body.appendChild(upgradeButtons[index]);
