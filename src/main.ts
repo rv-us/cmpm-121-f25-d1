@@ -9,8 +9,8 @@ interface Item {
   description: string;
 }
 
-let counter: number = 0;
-let growthRate: number = 0;
+let fuel: number = 0;
+let fuelPerSecond: number = 0;
 let lastTime: number = performance.now();
 
 const availableItems: Item[] = [
@@ -61,14 +61,14 @@ const availableItems: Item[] = [
   },
 ];
 
-const counterDisplay = document.createElement("div");
-counterDisplay.innerHTML = `${counter} fuel`;
-counterDisplay.style.fontSize = "24px";
-counterDisplay.style.margin = "20px";
-counterDisplay.style.fontWeight = "bold";
+const fuelDisplay = document.createElement("div");
+fuelDisplay.innerHTML = `${fuel} fuel`;
+fuelDisplay.style.fontSize = "24px";
+fuelDisplay.style.margin = "20px";
+fuelDisplay.style.fontWeight = "bold";
 
 const growthDisplay = document.createElement("div");
-growthDisplay.innerHTML = `${growthRate.toFixed(1)} fuel/sec`;
+growthDisplay.innerHTML = `${fuelPerSecond.toFixed(1)} fuel/sec`;
 growthDisplay.style.fontSize = "18px";
 growthDisplay.style.margin = "10px";
 growthDisplay.style.color = "#666";
@@ -84,8 +84,8 @@ button.style.backgroundColor = "#4A90E2";
 button.style.color = "white";
 
 button.addEventListener("click", () => {
-  counter++;
-  counterDisplay.innerHTML = `${counter} fuel`;
+  fuel++;
+  fuelDisplay.innerHTML = `${fuel} fuel`;
 });
 
 const upgradeButtons: HTMLButtonElement[] = [];
@@ -119,13 +119,13 @@ availableItems.forEach((item, _index) => {
   descriptionDisplay.style.fontStyle = "italic";
 
   upgradeButton.addEventListener("click", () => {
-    if (counter >= item.cost) {
-      counter -= item.cost;
+    if (fuel >= item.cost) {
+      fuel -= item.cost;
       item.owned++;
-      growthRate += item.rate;
+      fuelPerSecond += item.rate;
       item.cost = Math.floor(item.baseCost * Math.pow(1.15, item.owned));
-      counterDisplay.innerHTML = `${counter} fuel`;
-      growthDisplay.innerHTML = `${growthRate.toFixed(1)} fuel/sec`;
+      fuelDisplay.innerHTML = `${fuel} fuel`;
+      growthDisplay.innerHTML = `${fuelPerSecond.toFixed(1)} fuel/sec`;
       ownedDisplay.innerHTML = `${item.name}: ${item.owned} owned`;
       upgradeButton.innerHTML = `Buy ${item.name} (${item.cost} fuel)`;
     }
@@ -136,22 +136,22 @@ availableItems.forEach((item, _index) => {
   descriptionDisplays.push(descriptionDisplay);
 });
 
-function updateCounter(currentTime: number) {
+function updateGameState(currentTime: number) {
   const deltaTime = (currentTime - lastTime) / 1000;
-  counter += growthRate * deltaTime;
-  counterDisplay.innerHTML = `${Math.floor(counter)} fuel`;
+  fuel += fuelPerSecond * deltaTime;
+  fuelDisplay.innerHTML = `${Math.floor(fuel)} fuel`;
 
   upgradeButtons.forEach((button, index) => {
-    button.disabled = counter < availableItems[index].cost;
+    button.disabled = fuel < availableItems[index].cost;
   });
 
   lastTime = currentTime;
-  requestAnimationFrame(updateCounter);
+  requestAnimationFrame(updateGameState);
 }
 
-requestAnimationFrame(updateCounter);
+requestAnimationFrame(updateGameState);
 
-document.body.appendChild(counterDisplay);
+document.body.appendChild(fuelDisplay);
 document.body.appendChild(growthDisplay);
 document.body.appendChild(button);
 
