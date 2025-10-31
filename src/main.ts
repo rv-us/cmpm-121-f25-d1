@@ -1,5 +1,10 @@
 import "./style.css";
 
+// UI Design Credits:
+// - Dark space background inspired by space-themed projects in the gallery
+// - Button animations inspired by interactive UI designs from peer projects
+// See gallery: https://rndmcnlly.github.io/cmpm-121-f25-d1-gallery/
+
 // ============================================================================
 // Types
 // ============================================================================
