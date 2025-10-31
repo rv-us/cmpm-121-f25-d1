@@ -2,8 +2,9 @@ import "./style.css";
 
 // UI Design Credits:
 // - Dark space background inspired by space-themed projects in the gallery
-// - Button animations inspired by interactive UI designs from peer projects
-// See gallery: https://rndmcnlly.github.io/cmpm-121-f25-d1-gallery/
+// - Button animations inspired by TwilightEch03s's project with smooth hover effects
+//   See: https://twilightech03s.github.io/cmpm-121-f25-d1/
+// Gallery: https://rndmcnlly.github.io/cmpm-121-f25-d1-gallery/
 
 // ============================================================================
 // Types

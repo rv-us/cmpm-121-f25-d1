@@ -55,9 +55,10 @@ body::before {
   color: #a0aec0;
 }
 
-/* Button animations inspired by interactive UI designs in peer projects
- * See gallery: https://rndmcnlly.github.io/cmpm-121-f25-d1-gallery/
- * Credit to peer projects for inspiring hover and transition effects
+/* Button animations inspired by TwilightEch03s's project
+ * See: https://twilightech03s.github.io/cmpm-121-f25-d1/
+ * I noticed their smooth hover effects with scale transforms and shadow transitions
+ * which inspired the interactive button styling here
  */
 
 .launch-button {

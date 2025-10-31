@@ -12,11 +12,11 @@ Inspired by various space-themed projects in the gallery that featured dark back
 
 ### Interactive Button Animations
 
-Inspired by peer projects featuring smooth hover effects and visual feedback. The launch button and upgrade buttons now feature:
+Inspired by [TwilightEch03s's project](https://twilightech03s.github.io/cmpm-121-f25-d1/) which featured polished button interactions with smooth hover effects and visual feedback. I noticed how their buttons used CSS transitions for scale transforms and enhanced shadow effects that made the interface feel more responsive. Based on this inspiration, the launch button and upgrade buttons now feature:
 
-- Hover effects with scale and shadow transitions
+- Hover effects with scale and shadow transitions (transform: scale and translateY)
 - Active state feedback for click interactions
-- Smooth CSS transitions for better user experience
-- Visual glow effects that match the space theme
+- Smooth CSS transitions (transition: all 0.3s ease)
+- Visual glow effects using box-shadow that match the space theme
 
 See the gallery for all inspiring projects: https://rndmcnlly.github.io/cmpm-121-f25-d1-gallery/
